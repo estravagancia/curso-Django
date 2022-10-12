@@ -3,6 +3,11 @@ import datetime
 from django.template import Template, Context
 
 
+class Persona(object):
+  def __init__(self,nombre, apellido) -> None:
+     self.nombre = nombre
+     self.apellido = apellido
+
 def saludo(request): # primera vista
     documento = "Hola mundo. Mi primera página con django"
     return HttpResponse(documento)
@@ -48,7 +53,7 @@ def calcula_edad(request , edad, any):
   return HttpResponse(documento)
 
 
-# Lo anterior es para entender como funciona. No se hace así, se usan plantillas.
+# Lo anterior es para entender como funciona. No se hace así, se usan plantillas. Video 5
 # para entenderlo -> (pero no se haría así tampoco, se usarían "cargadores")
 def saludo_plantilla(request):
     doc_externo = open("C:/inetpub/desarrollo/django/Proyecto1/Proyecto1/plantillas/miplantilla.html")
@@ -58,3 +63,27 @@ def saludo_plantilla(request):
     documento = plt.render(ctx)
     return HttpResponse(documento)
 
+#  vídeo 6
+# uso de variables en plantillas
+def saludo_plantilla_variables(request):
+    nombre = "alberto"
+    apellido = "Ibáñez"
+    ahora = datetime.datetime.now()
+    doc_externo = open("C:/inetpub/desarrollo/django/Proyecto1/Proyecto1/plantillas/miplantilla_variables.html")
+    plt = Template(doc_externo.read())
+    doc_externo.close()
+    # hacemos uso de diccionarios: "clave": valor
+    ctx = Context({"nombre_persona":nombre, "apellido_persona":apellido, "momento_actual": ahora})
+    documento = plt.render(ctx)
+    return HttpResponse(documento)
+# usando la clase Persona
+def saludo_plantilla_clase(request):
+    p1 = Persona("Stella Maris","Camelino Casco Bogado")
+    ahora = datetime.datetime.now()
+    doc_externo = open("C:/inetpub/desarrollo/django/Proyecto1/Proyecto1/plantillas/miplantilla_clase.html")
+    plt = Template(doc_externo.read())
+    doc_externo.close()
+    # hacemos uso de diccionarios: "clave": valor
+    ctx = Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora})
+    documento = plt.render(ctx)
+    return HttpResponse(documento)
