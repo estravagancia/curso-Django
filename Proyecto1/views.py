@@ -78,7 +78,7 @@ def saludo_plantilla_variables(request):
     return HttpResponse(documento)
 # usando la clase Persona
 def saludo_plantilla_clase(request):
-    p1 = Persona("Stella Maris","Camelino Casco Bogado")
+    p1 = Persona("Stella","Camelino")
     ahora = datetime.datetime.now()
     doc_externo = open("C:/inetpub/desarrollo/django/Proyecto1/Proyecto1/plantillas/miplantilla_clase.html")
     plt = Template(doc_externo.read())
@@ -95,6 +95,20 @@ def saludo_plantilla_lista(request):
     # temas_del_curso= []
     ahora = datetime.datetime.now()
     doc_externo = open("C:/inetpub/desarrollo/django/Proyecto1/Proyecto1/plantillas/miplantilla_lista.html")
+    plt = Template(doc_externo.read())
+    doc_externo.close()
+    # hacemos uso de diccionarios: "clave": valor
+    ctx = Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
+    documento = plt.render(ctx)
+    return HttpResponse(documento)
+
+  # video 8
+def saludo_plantilla_condicionales(request):
+    p1 = Persona("alberto","Ibáñez")
+    temas_del_curso= ["Plantillas","Modelos","Formularios","Vistas","Despliegue"]
+    # temas_del_curso= []
+    ahora = datetime.datetime.now()
+    doc_externo = open("C:/inetpub/desarrollo/django/Proyecto1/Proyecto1/plantillas/miplantilla_condicionales.html")
     plt = Template(doc_externo.read())
     doc_externo.close()
     # hacemos uso de diccionarios: "clave": valor

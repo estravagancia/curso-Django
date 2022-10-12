@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Proyecto1.views import saludo, despedida, dame_fecha, muestra_edad, calcula_edad, saludo_plantilla, saludo_plantilla_variables, saludo_plantilla_clase, saludo_plantilla_lista
+from Proyecto1.views import saludo, despedida, dame_fecha, muestra_edad, calcula_edad, saludo_plantilla, saludo_plantilla_variables, saludo_plantilla_clase, saludo_plantilla_lista, saludo_plantilla_condicionales
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,5 +34,6 @@ urlpatterns = [
     path('plantilla_clase/', saludo_plantilla_clase),
     # usamos plantilla con lista
     path('plantilla_lista/', saludo_plantilla_lista),
+    path('plantilla_condicionales/', saludo_plantilla_condicionales),
    
 ]
