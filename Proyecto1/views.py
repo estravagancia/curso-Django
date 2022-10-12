@@ -87,3 +87,17 @@ def saludo_plantilla_clase(request):
     ctx = Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora})
     documento = plt.render(ctx)
     return HttpResponse(documento)
+  
+  # video 7
+def saludo_plantilla_lista(request):
+    p1 = Persona("Maris","Camelino")
+    temas_del_curso= ["Plantillas","Modelos","Formularios","Vistas","Despliegue"]
+    # temas_del_curso= []
+    ahora = datetime.datetime.now()
+    doc_externo = open("C:/inetpub/desarrollo/django/Proyecto1/Proyecto1/plantillas/miplantilla_lista.html")
+    plt = Template(doc_externo.read())
+    doc_externo.close()
+    # hacemos uso de diccionarios: "clave": valor
+    ctx = Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
+    documento = plt.render(ctx)
+    return HttpResponse(documento)

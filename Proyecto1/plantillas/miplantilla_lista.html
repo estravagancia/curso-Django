@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saludo usando Listas - Con condicionales</title>
+  </head>
+  <body>
+    <h1>
+      Hola {{nombre_persona}} {{apellido_persona.upper}}. Estamos viendo nuestra
+      primera plantilla, pasando variables con django, usando una clase
+    </h1>
+    <p>Datos completos: {{momento_actual}}</p>
+    <p>
+      Viendo esto a fecha:
+      {{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}
+    </p>
+    {% if temas %}
+    <p><strong>Temas del curso:</strong></p>
+    <ul>
+      {% for tema in temas %}
+      <li>{{tema}}</li>
+      {% endfor %}
+    </ul>
+		{% else %}
+		<p>No existe temario para este curso</p>
+    {% endif %}
+<!-- 
+		<p>{{temas}}</p>
+		<p>{{temas.1}}</p>
+		<p>{{temas.0}}</p> 
+-->
+<!-- 
+Vídeo 7
+Jerarquía u orden de llamadas desde la plantilla
+
+1º- Diccionario
+2º- Atributo
+3º- Método
+4º- Indice de lista
+-->
+
+<!-- Las llamadas a métodos desde plantillas, no tienen () -->
+</body>
+</html>
