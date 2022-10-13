@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plantilla incrustada</title>
+    <style>
+      #barra {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex; 
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+  <body>
+
+    {% include "superior/barra-navegacion.html" %}
+
+    <h1>Hola! Estamos viendo nuestra plantilla - con plantilla incrustada | barra-navegacion.html</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec nibh rutrum, mollis lorem sit amet, varius metus. Donec et ante sit amet mauris ullamcorper molestie. Ut tempor pulvinar convallis. Proin pellentesque gravida finibus. Morbi facilisis ut ante nec cursus. Nulla facilisi. Vivamus bibendum fringilla lacus, et faucibus nisl auctor viverra. Vestibulum dignissim tortor sed nibh malesuada bibendum. Quisque nulla enim, rhoncus a ipsum sit amet, sodales rutrum enim. Fusce vehicula vestibulum arcu non hendrerit. Sed eu gravida nibh. Ut id semper velit, eget volutpat lorem. Vestibulum aliquam lorem vitae augue consequat volutpat. Donec mattis tortor sed arcu facilisis volutpat. Aliquam erat volutpat.</p>
+    <p>Fusce aliquet, massa vitae convallis condimentum, enim massa blandit lectus, feugiat laoreet est erat sit amet enim. Vestibulum posuere in risus ac aliquet. Quisque quis felis turpis. Sed dolor sapien, ultrices non mauris non, pretium viverra lectus. Nulla vel neque purus. Phasellus sit amet nunc sollicitudin, gravida ex nec, fringilla erat. Donec scelerisque vehicula tellus, quis feugiat sem commodo vel. Nullam auctor ultricies ex et cursus. Pellentesque sagittis in lorem non viverra. Ut in accumsan elit.</p>
+  </body>
+</html>

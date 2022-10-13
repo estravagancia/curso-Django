@@ -5,6 +5,13 @@ from django.template import Template, Context
 # haciendo más corto el loader
 from django.template.loader import get_template
 
+# video 9
+from django.shortcuts import render
+#  is equivalent to:
+# from django.http import HttpResponse
+# from django.template import loader
+
+
 class Persona(object):
   def __init__(self,nombre, apellido) -> None:
      self.nombre = nombre
@@ -147,3 +154,37 @@ def saludo_plantilla_loader(request):
     documento = doc_externo.render({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
     
     return HttpResponse(documento)
+  
+  # video 9
+def saludo_plantilla_shortcut(request):
+    p1 = Persona("alberto","Ibáñez")
+    temas_del_curso= ["Plantillas","Modelos","Formularios","Vistas","Despliegue"]
+    ahora = datetime.datetime.now()
+    
+    # doc_externo = get_template('miplantilla_shortcut.html')
+    
+    # documento = doc_externo.render({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
+    
+    
+    # modificamos HttpResponse pasa a ser render
+    # return HttpResponse(documento)
+    
+    return render(request,'miplantilla_shortcut.html',{"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
+  
+def saludo_plantilla_con_plantilla(request):
+    p1 = Persona("alberto","Ibáñez")
+    temas_del_curso= ["Plantillas","Modelos","Formularios","Vistas","Despliegue"]
+    ahora = datetime.datetime.now()
+    
+    # doc_externo = get_template('miplantilla_shortcut.html')
+    
+    # documento = doc_externo.render({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
+    
+    
+    # modificamos HttpResponse pasa a ser render
+    # return HttpResponse(documento)
+    
+    return render(request,'miplantilla_con_plantilla.html',{"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
+   
+  
+  

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saludo usando shortcut</title>
+  </head>
+  <body>
+    <h1>Hola! Estamos viendo nuestra primera plantilla - shortcut</h1>
+<p><a href="https://docs.djangoproject.com/es/4.1/topics/http/shortcuts/" target="_blank">https://docs.djangoproject.com/es/4.1/topics/http/shortcuts/</a></p>
+
+    {% if nombre_persona == 'albert' %}
+    <p>El c&oacute;digo lo ha escrito el autor del repositorio</p>
+    {% else %}
+    <!-- campo|filtro -->
+    <p>El autor es {{nombre_persona|upper}}</p>
+    {% endif %}
+    <p>Datos completos: {{momento_actual}}</p>
+    <p>
+      Viendo esto a fecha:
+      {{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}
+    </p>
+    {% if temas %}
+    <p><strong>Temas del curso:</strong></p>
+    <ul>
+      {% for tema in temas %}
+      <!-- filtros encadenados -->
+      <li>{{tema|first|lower}}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No existe temario para este curso</p>
+    {% endif %} 
+    {# comentario de una sola línea #} 
+    {% comment %} 
+    Video 8
+    NO ES CONVENIENTE USAR estructuras de control de flujo en LAS PLANTILLAS, lo suyo es declararlo en las VIEWS
+    {% endcomment %}
+  </body>
+</html>
