@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+	<h1>Prácticas (personales) curso Django</h1>
+	{% include "superior/barra-navegacion.html" %}
+	<h2>El curso lo ofrece píldoras informáticas</h2>
+
+	{% block content %}
+	{% endblock %}
+
+	<footer><p>Gracias por su visita</p></footer>
+</body>
+</html>

@@ -186,5 +186,14 @@ def saludo_plantilla_con_plantilla(request):
     
     return render(request,'miplantilla_con_plantilla.html',{"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
    
+  # video 10
+  # herencia de las plantillas {% extends "base.html" %}
+def curso_django(request):
+    ahora = datetime.datetime.now()
+    
+    return render(request,"curso-django.html",{"dame_fecha":ahora})
   
-  
+def curso_css(request):
+    ahora = datetime.datetime.now()
+    
+    return render(request,"curso-css.html",{"dame_fecha":ahora})

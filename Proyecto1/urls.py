@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Proyecto1.views import saludo, despedida, dame_fecha, muestra_edad, calcula_edad, saludo_plantilla, saludo_plantilla_variables, saludo_plantilla_clase, saludo_plantilla_lista, saludo_plantilla_condicionales, saludo_plantilla_loader,saludo_plantilla_shortcut,saludo_plantilla_con_plantilla
+from Proyecto1.views import saludo, despedida, dame_fecha, muestra_edad, calcula_edad, saludo_plantilla, saludo_plantilla_variables, saludo_plantilla_clase, saludo_plantilla_lista, saludo_plantilla_condicionales, saludo_plantilla_loader,saludo_plantilla_shortcut,saludo_plantilla_con_plantilla, curso_django, curso_css
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,8 +34,16 @@ urlpatterns = [
     path('plantilla_clase/', saludo_plantilla_clase),
     # usamos plantilla con lista
     path('plantilla_lista/', saludo_plantilla_lista),
+    # usamos condiciones en la plantilla
     path('plantilla_condicionales/', saludo_plantilla_condicionales),
+    # usamos loader ...from
     path('plantilla_loader/', saludo_plantilla_loader),
+    # usamos shorcut ...from, que equivale a 2 que hemos usado anteriormente
     path('plantilla_shortcut/', saludo_plantilla_shortcut),
+    # incrustamos plantilla barra-navegacion en plantilla
     path('plantilla_con_plantilla/', saludo_plantilla_con_plantilla),
- ]
+    # herencia de plantillas
+    path('curso-django/', curso_django),
+    path('curso-css/', curso_css),
+    
+ ] 
