@@ -1,7 +1,9 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
-
+# from django.template import loader
+# haciendo más corto el loader
+from django.template.loader import get_template
 
 class Persona(object):
   def __init__(self,nombre, apellido) -> None:
@@ -114,4 +116,34 @@ def saludo_plantilla_condicionales(request):
     # hacemos uso de diccionarios: "clave": valor
     ctx = Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
     documento = plt.render(ctx)
+    return HttpResponse(documento)
+
+
+# usando loader. Basicamente consiste en decirle a nuestro proyecto, que las plantillas están en una ubicación. Nos ahorraremos el método open y close. 
+# from django.template import loader
+# Realizamos cambios en nuestro archivo settings.py en TEMPLATES -> DIRS indicando la ruta de las plantillas
+
+def saludo_plantilla_loader(request):
+    p1 = Persona("alberto","Ibáñez")
+    temas_del_curso= ["Plantillas","Modelos","Formularios","Vistas","Despliegue"]
+    ahora = datetime.datetime.now()
+    
+    # debido a que usamos loader, cambian algunas cosas.
+    
+    # doc_externo = open("C:/inetpub/desarrollo/django/Proyecto1/Proyecto1/plantillas/miplantilla_loader.html")
+    # plt = Template(doc_externo.read())
+    
+    # doc_externo = loader.get_template('miplantilla_loader.html')
+    # con la versión corta - from django.template.loader import get_template
+
+    doc_externo = get_template('miplantilla_loader.html')
+    # doc_externo.close()
+    
+    # A pesar de que los 2 instancias son Template (plt = Template   &  loader.get_template), nos da error. 
+    # No nos permite pasar un contexto, pasamos un diccionario -> renderizando directamente el diccionario, no necesitamos un Context
+    # ctx = Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
+    # documento = doc_externo.render(ctx)
+    
+    documento = doc_externo.render({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "momento_actual": ahora, "temas":temas_del_curso})
+    
     return HttpResponse(documento)
